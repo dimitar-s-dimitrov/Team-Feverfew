@@ -12,14 +12,17 @@ define("crosshair", function () {
         });
     });
 
-    // Prevent the children elements from triggering this event
-    $gameField.children().on("mousemove", function (e) {
-        e.stopPropagation();
-    });
 
     return {
+        /* 
+         * Binds handler to the shoot event.
+         * Passes plain object with the offset of the
+         * element to the handler.
+         */
         onShoot: function (action) {
-
+            $gameField.on("click", function (e) {
+                action($crosshair.offset());
+            });
         }
     };
 });

@@ -15,7 +15,9 @@ define("game", function () {
             restartGame();
         },
 
-        isGameStarted: false,
+        shootAt: function (pointOffset) {
+            console.log("you shooted at " + pointOffset.toString());
+        },
 
         gameName: "Mnoo qka"
     }

@@ -6,16 +6,20 @@ define("crosshair", function () {
         crosshairHeight = $crosshair.height();
 
     $gameField.on("mousemove", function (e) {
-        // We must handle the event, fired by the game field only
-        if (e.target == $gameField[0]) {
-            $crosshair.css({
-                top: e.pageY - gameFieldOffset.top - crosshairHeight,
-                left: e.pageX - gameFieldOffset.left - crosshairWidth
-            });
-        }
+        $crosshair.css({
+            top: e.pageY - gameFieldOffset.top - crosshairHeight,
+            left: e.pageX - gameFieldOffset.left - crosshairWidth
+        });
+    });
+
+    // Prevent the children elements from triggering this event
+    $gameField.children().on("mousemove", function (e) {
+        e.stopPropagation();
     });
 
     return {
-        move: function () { }
+        onShoot: function (action) {
+
+        }
     };
 });

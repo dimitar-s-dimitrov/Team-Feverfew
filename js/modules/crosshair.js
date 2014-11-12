@@ -1,3 +1,5 @@
+"use strict";
+
 define("crosshair", function () {
     var $crosshair = $("#crosshair"),
         $gameField = $("#game-field"),

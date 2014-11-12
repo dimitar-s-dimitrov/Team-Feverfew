@@ -1,3 +1,5 @@
+"use strict";
+
 define("flyingNakov", function () {
     function FlyingNakov(element, width, height) {
         // Constructor logic

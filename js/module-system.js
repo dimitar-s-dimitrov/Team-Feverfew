@@ -1,3 +1,5 @@
+"use strict";
+
 var definedModules = {};
 
 /*  Defines module with given name as first parameter

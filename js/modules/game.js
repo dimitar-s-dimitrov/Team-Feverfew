@@ -1,3 +1,5 @@
+"use strict";
+
 define("game", function () {
     // Private variables
     var gameType, gamePlayers;

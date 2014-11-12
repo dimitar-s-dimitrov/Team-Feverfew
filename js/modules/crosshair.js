@@ -6,6 +6,8 @@ define("crosshair", function () {
         crosshairHeight = $crosshair.height();
 
     $gameField.on("mousemove", function (e) {
+        e.stopPropagation();
+
         $crosshair.css({
             top: e.pageY - gameFieldOffset.top - crosshairHeight / 2,
             left: e.pageX - gameFieldOffset.left - crosshairWidth / 2
@@ -21,6 +23,8 @@ define("crosshair", function () {
          */
         onShoot: function (action) {
             $gameField.on("click", function (e) {
+                e.stopPropagation();
+
                 action({
                     top: e.pageY - gameFieldOffset.top,
                     left: e.pageX - gameFieldOffset.left

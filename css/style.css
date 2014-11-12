@@ -42,7 +42,11 @@ html, body {
 .nakov {
     width: 100px;
     height: 100px;
-    background-color: yellow;
+    background-image: url("../img/Svetlin-Nakov-photo.jpg");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid red;
 }
 
 .hidden {

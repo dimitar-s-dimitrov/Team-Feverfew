@@ -18,8 +18,6 @@ html, body {
     width: 50px;
     height: 50px;
     content: url("../img/crosshair2.png");
-    /*background-color: black;*/
-    /*border-radius: 10px;*/
 }
 
 #flying-nakov-templates-wrapper {

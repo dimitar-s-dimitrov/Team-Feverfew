@@ -42,7 +42,6 @@ define("flyingNakov", function () {
         var newRandomPosition = generateRandomPosition(flyingNakov.width, flyingNakov.height);
         flyingNakov.$element.animate(newRandomPosition, flyingNakov.speed, function () {
             if (--movesLeft > 0) {
-                console.log(movesLeft);
                 animateElement(flyingNakov, movesLeft);
                 
             } else {

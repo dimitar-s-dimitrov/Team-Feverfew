@@ -1,16 +1,34 @@
 define("crosshair", function () {
     var $crosshair = $("#crosshair"),
         $gameField = $("#game-field"),
+        gameFieldWidth = $gameField.width();
+        gameFieldHeight = $gameField.height();
         gameFieldOffset = $gameField.offset(),
         crosshairWidth = $crosshair.width(),
         crosshairHeight = $crosshair.height();
 
-    $gameField.on("mousemove", function (e) {
+    $(document.body).on("mousemove", function (e) {
         e.stopPropagation();
 
+        var topOffset = e.pageY - gameFieldOffset.top - crosshairHeight / 2;
+        var leftOffset = e.pageX - gameFieldOffset.left - crosshairWidth / 2;
+        
+        if (leftOffset < 0) {
+            leftOffset = 0;
+        }
+        if (leftOffset > gameFieldWidth) {
+            leftOffset = gameFieldWidth;
+        }
+        if (topOffset < 0) {
+            topOffset = 0;
+        }
+        if (topOffset > gameFieldHeight) {
+            topOffset = gameFieldHeight;
+        }
+        
         $crosshair.css({
-            top: e.pageY - gameFieldOffset.top - crosshairHeight / 2,
-            left: e.pageX - gameFieldOffset.left - crosshairWidth / 2
+            top: topOffset,
+            left: leftOffset
         });
     });
 

@@ -16,7 +16,7 @@ define("game", function () {
         },
 
         shootAt: function (pointOffset) {
-            console.log("you shooted at " + pointOffset.toString());
+            console.log("you shooted at " + JSON.stringify(pointOffset));
         },
 
         gameName: "Mnoo qka"

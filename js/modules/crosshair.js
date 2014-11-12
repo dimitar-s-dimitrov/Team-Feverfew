@@ -7,8 +7,8 @@ define("crosshair", function () {
 
     $gameField.on("mousemove", function (e) {
         $crosshair.css({
-            top: e.pageY - gameFieldOffset.top - crosshairHeight,
-            left: e.pageX - gameFieldOffset.left - crosshairWidth
+            top: e.pageY - gameFieldOffset.top - crosshairHeight / 2,
+            left: e.pageX - gameFieldOffset.left - crosshairWidth / 2
         });
     });
 
@@ -16,12 +16,15 @@ define("crosshair", function () {
     return {
         /* 
          * Binds handler to the shoot event.
-         * Passes plain object with the offset of the
-         * element to the handler.
+         * Passes plain object with the position of the
+         * element(relative to the parent) to the handler.
          */
         onShoot: function (action) {
             $gameField.on("click", function (e) {
-                action($crosshair.offset());
+                action({
+                    top: e.pageY - gameFieldOffset.top,
+                    left: e.pageX - gameFieldOffset.left
+                });
             });
         }
     };

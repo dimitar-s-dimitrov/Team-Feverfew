@@ -10,6 +10,9 @@ define("flyingNakov", function () {
         TODO:
             *Implement element self destruction after animation or hit
             *Maybe implement fly-out animation
+
+
+            *Animations cant be improved!!!
     *******************************************************/
 
     // Cache templates and their count

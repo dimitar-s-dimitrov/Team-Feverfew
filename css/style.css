@@ -15,10 +15,11 @@ html, body {
 
 #crosshair {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    content: url("../img/crosshair2.png");
+    /*background-color: black;*/
+    /*border-radius: 10px;*/
 }
 
 #flying-nakov-templates-wrapper {

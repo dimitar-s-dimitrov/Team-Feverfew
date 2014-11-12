@@ -50,6 +50,8 @@ define("game", function () {
 
                     // Reinit and start again after given delay
                     flyingNakov.reinitialize();
+
+                    // setTimeout has bug with the flyingNakov reference! It does not point to the proper element.
                     //setTimeout(function () {
                         flyingNakov.startAnimation();
                     //}, 1000);

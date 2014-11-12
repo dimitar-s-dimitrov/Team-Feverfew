@@ -10,6 +10,7 @@ html, body {
     width: 100%;
     height: 600px;
     cursor: none;
+    overflow: hidden;
 }
 
 #crosshair {
@@ -20,8 +21,30 @@ html, body {
     border-radius: 10px;
 }
 
+#flying-nakov-templates-wrapper {
+    display: none;
+}
+
+#points-heading {
+    text-align: center;
+}
+
 .container {
     width: 1000px;
     margin: auto;
     padding-top: 50px;
+}
+
+.flying-nakov {
+    position: absolute;
+}
+
+.nakov {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+}
+
+.hidden {
+    visibility: hidden;
 }

@@ -11,4 +11,5 @@ $(function () {
     });
 
     game.startGame();
+
 });

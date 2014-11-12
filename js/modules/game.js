@@ -14,6 +14,7 @@ define("game", function () {
             *Maybe implement flying nakovs array controller
             *Implement hit animations
             *shootAt method does so many work, improve it
+            *implement delay variable for the levels
     ****************************************************/
 
     return {
@@ -24,6 +25,7 @@ define("game", function () {
             flyingNakovs = [];
             FlyingNakov = require("flyingNakov");
 
+            // Adding new Flying Nakov object
             flyingNakovs.push(new FlyingNakov(speed));
             // TODO: check main todo list
         },
@@ -38,10 +40,13 @@ define("game", function () {
             // Check if any flying nakov is hit
             for (i = 0, len = flyingNakovs.length; i < len; i++) {
                 flyingNakov = flyingNakovs[i];
+
                 if (flyingNakov.isHit(pointOffset.left, pointOffset.top)) {
+                    // Sum and set points
                     totalPoints += flyingNakov.getPoints();
                     $pointsHeading.text(totalPoints + " points");
 
+                    // Reinit and start again after given delay
                     flyingNakov.reinitialize();
                     setTimeout(function () {
                         flyingNakov.startAnimation();

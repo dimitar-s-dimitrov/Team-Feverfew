@@ -27,6 +27,8 @@ define("game", function () {
 
             // Adding new Flying Nakov object
             flyingNakovs.push(new FlyingNakov(speed));
+            flyingNakovs.push(new FlyingNakov(speed));
+
             // TODO: check main todo list
         },
 
@@ -48,10 +50,11 @@ define("game", function () {
 
                     // Reinit and start again after given delay
                     flyingNakov.reinitialize();
-                    setTimeout(function () {
+                    //setTimeout(function () {
                         flyingNakov.startAnimation();
-                    }, 1000);
+                    //}, 1000);
 
+                    
                     // TODO: check main todo list
                 }
             }

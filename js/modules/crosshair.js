@@ -9,6 +9,7 @@ define("crosshair", function () {
         crosshairWidth = $crosshair.width(),
         crosshairHeight = $crosshair.height();
 
+    // Set the crosshair movement handler
     $(document.body).on("mousemove", function (e) {
         e.stopPropagation();
 
@@ -42,8 +43,9 @@ define("crosshair", function () {
          * element(relative to the parent) to the handler.
          */
         onShoot: function (action) {
-            $gameField.on("click", function (e) {
+            $gameField.on("mousedown", function (e) {
                 e.stopPropagation();
+                e.preventDefault();
 
                 action({
                     top: e.pageY - gameFieldOffset.top,

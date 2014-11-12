@@ -3,8 +3,8 @@
 define("crosshair", function () {
     var $crosshair = $("#crosshair"),
         $gameField = $("#game-field"),
-        gameFieldWidth = $gameField.width();
-        gameFieldHeight = $gameField.height();
+        gameFieldWidth = $gameField.width(),
+        gameFieldHeight = $gameField.height(),
         gameFieldOffset = $gameField.offset(),
         crosshairWidth = $crosshair.width(),
         crosshairHeight = $crosshair.height();

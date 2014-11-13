@@ -1,10 +1,10 @@
 "use strict";
 
-define("flyingNakov", function () {
+define("FlyingBird", function () {
     var $gameField = $("#game-field"),
         gameFieldWidth = $gameField.width(),
         gameFieldHeight = $gameField.height(),
-        $flyingNakovTemplates, templatesCount;
+        $flyingBirdTemplates, templatesCount;
 
     /******************************************************
         TODO:
@@ -17,13 +17,14 @@ define("flyingNakov", function () {
     *******************************************************/
 
     // Cache templates and their count
-    $flyingNakovTemplates = $("#flying-nakov-templates-wrapper").children();
-    templatesCount = $flyingNakovTemplates.length;
+    $flyingBirdTemplates = $("#flying-bird-templates-wrapper").children();
+    templatesCount = $flyingBirdTemplates.length;
 
     // Generate and return flying nakov with random type
+    // TODO: this is unnecessary function
     function generateRandomType() {
         var randomNumber = Math.random() * templatesCount;
-        var randomTemplate = $flyingNakovTemplates.eq(Math.floor(randomNumber));
+        var randomTemplate = $flyingBirdTemplates.eq(Math.floor(randomNumber));
         return randomTemplate.clone();
     }
 
@@ -38,16 +39,20 @@ define("flyingNakov", function () {
         };
     }
 
+    function createBird(birdClass) {
+        // TODO: implement it!
+    }
+
     // Creates the element animation
     // Change recurse with while loop to set the animation queue proper.
     // With recursive method we build the animation trail after each move end.
     // TODO: check main todo list
-    function animateElement(flyingNakov, movesLeft) {
-        var newRandomPosition = generateRandomPosition(flyingNakov.width, flyingNakov.height);
+    function animateElement(flyingBird, movesLeft) {
+        var newRandomPosition = generateRandomPosition(flyingBird.width, flyingBird.height);
 
-        flyingNakov.$element.animate(newRandomPosition, flyingNakov.speed, function () {
+        flyingBird.$element.animate(newRandomPosition, flyingBird.speed, function () {
             if (--movesLeft > 0) {
-                animateElement(flyingNakov, movesLeft);
+                animateElement(flyingBird, movesLeft);
                 
             } else {
                 // TODO: check main todo list
@@ -56,10 +61,15 @@ define("flyingNakov", function () {
     }
 
     // Constructor
-    function FlyingNakov(defaultSpeed) {
+    function FlyingBird(defaultSpeed, birdClass) {
         var elementTop, elementLeft;
 
-        // Create flying nakov with random type
+        // Check if class is passed to the constructor
+        if (birdClass) {
+            this.$element = createBird(birdClass);
+        }
+        
+        // TODO: improve exists!!! createBird without class can make a random class bird!
         this.$element = generateRandomType();
 
         // Append the element to the game field        
@@ -74,7 +84,7 @@ define("flyingNakov", function () {
     }
 
     // Public API
-    FlyingNakov.prototype = {
+    FlyingBird.prototype = {
 
         // Start the moving animation
         startAnimation: function () {
@@ -117,5 +127,5 @@ define("flyingNakov", function () {
         movesCount: 5,
     };
 
-    return FlyingNakov;
+    return FlyingBird;
 });

@@ -2,8 +2,8 @@
 
 define("game", function () {
     // Private variables
-    var FlyingNakov, flyingNakovs, FlyingDean, flyingDeans,
-        totalPoints, speed, speedDean,
+    var FlyingBird, flyingBirds,
+        totalPoints, speed, speed2,
         $pointsHeading = $("#points-heading");
 
     /***************************************************
@@ -17,24 +17,30 @@ define("game", function () {
             *implement delay variable for the levels
     ****************************************************/
 
+    // Generates birds. Accepts level as first parameter
+    function generateBirds(level) {
+        var birds = [];
+
+        // TODO: Generate birds
+
+        return birds;
+    }
+
     return {
         // Initializes and starts the game
         startGame: function () {
             totalPoints = 0;
             speed = 1300;
-            speedDean = 1000;
-            flyingNakovs = [];
-            FlyingNakov = require("flyingNakov");
-            flyingDeans = [];
-            FlyingDean = require("flyingDean");
+            speed2 = 1000;
+            flyingBirds = [];
+            FlyingBird = require("FlyingBird");
 
-            // Adding new Flying Dean object
-            flyingDeans.push(new FlyingDean(speedDean));
-            flyingDeans.push(new FlyingDean(speedDean));
-
-            // Adding new Flying Nakov object
-            flyingNakovs.push(new FlyingNakov(speed));
-            flyingNakovs.push(new FlyingNakov(speed));
+            // Adding more birds here
+            // Or implement a birds generator as a private function!!!
+            flyingBirds.push(new FlyingBird(speed));
+            flyingBirds.push(new FlyingBird(speed));
+            flyingBirds.push(new FlyingBird(speed2));
+            flyingBirds.push(new FlyingBird(speed2));
 
             // TODO: check main todo list
         },
@@ -44,47 +50,26 @@ define("game", function () {
          * Reinitializes the element
          */
         shootAt: function (pointOffset) {
-            var i, len, flyingNakov, flyingDean;
+            var i, len, flyingBird;
 
-            // Check if any flying Dean is hit
-            for (i = 0, len = flyingDeans.length; i < len; i++) {
-                flyingDean = flyingDeans[i];
+            // Check if any flying Bird is hit
+            for (i = 0, len = flyingBirds.length; i < len; i++) {
+                flyingBird = flyingBirds[i];
 
-                if (flyingDean.isHit(pointOffset.left, pointOffset.top)) {
+                if (flyingBird.isHit(pointOffset.left, pointOffset.top)) {
                     // Sum and set points
-                    totalPoints += flyingDean.getPoints();
+                    totalPoints += flyingBird.getPoints();
                     $pointsHeading.text(totalPoints + " points");
 
                     // Reinit and start again after given delay
-                    flyingDean.reinitialize();
+                    flyingBird.reinitialize();
 
-                    // setTimeout has bug with the flyingDean reference! It does not point to the proper element.
+                    // setTimeout has bug with the flyingBird reference! It does not point to the proper element.
                     //setTimeout(function () {
-                    flyingDean.startAnimation();
+                    flyingBird.startAnimation();
                     //}, 1000);
 
 
-                    // TODO: check main todo list
-                }
-            }
-            // Check if any flying nakov is hit
-            for (i = 0, len = flyingNakovs.length; i < len; i++) {
-                flyingNakov = flyingNakovs[i];
-
-                if (flyingNakov.isHit(pointOffset.left, pointOffset.top)) {
-                    // Sum and set points
-                    totalPoints += flyingNakov.getPoints();
-                    $pointsHeading.text(totalPoints + " points");
-
-                    // Reinit and start again after given delay
-                    flyingNakov.reinitialize();
-
-                    // setTimeout has bug with the flyingNakov reference! It does not point to the proper element.
-                    //setTimeout(function () {
-                        flyingNakov.startAnimation();
-                    //}, 1000);
-
-                    
                     // TODO: check main todo list
                 }
             }

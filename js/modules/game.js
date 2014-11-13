@@ -2,8 +2,8 @@
 
 define("game", function () {
     // Private variables
-    var FlyingNakov, flyingNakovs,
-        totalPoints, speed,
+    var FlyingNakov, flyingNakovs, FlyingDean, flyingDeans,
+        totalPoints, speed, speedDean,
         $pointsHeading = $("#points-heading");
 
     /***************************************************
@@ -22,8 +22,15 @@ define("game", function () {
         startGame: function () {
             totalPoints = 0;
             speed = 1300;
+            speedDean = 1000;
             flyingNakovs = [];
             FlyingNakov = require("flyingNakov");
+            flyingDeans = [];
+            FlyingDean = require("flyingDean");
+
+            // Adding new Flying Dean object
+            flyingDeans.push(new FlyingDean(speedDean));
+            flyingDeans.push(new FlyingDean(speedDean));
 
             // Adding new Flying Nakov object
             flyingNakovs.push(new FlyingNakov(speed));
@@ -37,8 +44,29 @@ define("game", function () {
          * Reinitializes the element
          */
         shootAt: function (pointOffset) {
-            var i, len, flyingNakov;
+            var i, len, flyingNakov, flyingDean;
 
+            // Check if any flying Dean is hit
+            for (i = 0, len = flyingDeans.length; i < len; i++) {
+                flyingDean = flyingDeans[i];
+
+                if (flyingDean.isHit(pointOffset.left, pointOffset.top)) {
+                    // Sum and set points
+                    totalPoints += flyingDean.getPoints();
+                    $pointsHeading.text(totalPoints + " points");
+
+                    // Reinit and start again after given delay
+                    flyingDean.reinitialize();
+
+                    // setTimeout has bug with the flyingDean reference! It does not point to the proper element.
+                    //setTimeout(function () {
+                    flyingDean.startAnimation();
+                    //}, 1000);
+
+
+                    // TODO: check main todo list
+                }
+            }
             // Check if any flying nakov is hit
             for (i = 0, len = flyingNakovs.length; i < len; i++) {
                 flyingNakov = flyingNakovs[i];

@@ -23,6 +23,9 @@ html, body {
 #flying-nakov-templates-wrapper {
     display: none;
 }
+#flying-dean-templates-wrapper {
+    display: none;
+}
 
 #points-heading {
     text-align: center;
@@ -37,7 +40,18 @@ html, body {
 .flying-nakov {
     position: absolute;
 }
-
+.flying-dean {
+    position: absolute;
+}
+.dean {
+    width: 120px;
+    height: 120px;
+    background-image: url("../img/flying-dean.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid red;
+}
 .nakov {
     width: 120px;
     height: 120px;

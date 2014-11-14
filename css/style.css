@@ -20,7 +20,7 @@ html, body {
     content: url("../img/crosshair2.png");
 }
 
-#flying-bird-templates-wrapper {
+#bird-templates-wrapper {
     display: none;
 }
 
@@ -34,7 +34,7 @@ html, body {
     padding-top: 50px;
 }
 
-.flying-bird {
+.bird {
     position: absolute;
 }
 

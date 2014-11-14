@@ -1,19 +1,19 @@
 "use strict";
 
-define("levelSystem", function (flyingBirds) {
+define("levelSystem", function (birds) {
 
     var levels = {
         level1: 3,
         level2: 4,
         level3: 5,
     },
-        FlyingBird = require("FlyingBird"),
+        Bird = require("Bird"),
         currentLevel;
 
     function createBirds() {
         // TODO: Add specific classes for levels
-        for (var i = 0, count = currentLevel - flyingBirds.length; i < count; i++) {
-            flyingBirds.push(new FlyingBird());
+        for (var i = 0, count = currentLevel - birds.length; i < count; i++) {
+            birds.push(new Bird());
         }
     }
 
@@ -27,15 +27,16 @@ define("levelSystem", function (flyingBirds) {
         }
 
         for (var i = 0; i < currentLevel; i++) {
-            flyingBirds[i].flyIn(movesCount);
+            birds[i].flyIn(movesCount);
         }
     }
 
     return {
         reset: function () {
             currentLevel = levels.level1;
-            while (flyingBirds.length > 0) {
-                flyingBirds.pop();
+            while (birds.length > 0) {
+                var bird = birds.pop();
+                bird.$element.remove();
             }
         },
 

@@ -2,8 +2,8 @@
 
 define("game", function () {
     // Private variables
-    var flyingBirds = [],
-        levelSystem = require("levelSystem", [flyingBirds]),
+    var birds = [],
+        levelSystem = require("levelSystem", [birds]),
 
         totalPoints,
         $pointsHeading = $("#points-heading");
@@ -45,19 +45,19 @@ define("game", function () {
          * Reinitializes the element
          */
         shootAt: function (pointOffset) {
-            var i, len, flyingBird;
+            var i, len, bird;
 
             // Check if any flying Bird is hit
-            for (i = 0, len = flyingBirds.length; i < len; i++) {
-                flyingBird = flyingBirds[i];
+            for (i = 0, len = birds.length; i < len; i++) {
+                bird = birds[i];
 
-                if (flyingBird.isHit(pointOffset.left, pointOffset.top)) {
+                if (bird.isHit(pointOffset.left, pointOffset.top)) {
                     // Sum and set points
-                    totalPoints += flyingBird.getPoints();
+                    totalPoints += bird.getPoints();
                     $pointsHeading.text(totalPoints + " points");
 
                     // Inform the level system that we have killed a bird
-                    levelSystem.killBird(flyingBird);
+                    levelSystem.killBird(bird);
                 }
             }
         }

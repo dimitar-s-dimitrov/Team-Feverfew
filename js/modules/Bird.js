@@ -1,10 +1,10 @@
 "use strict";
 
-define("FlyingBird", function () {
+define("Bird", function () {
     var $gameField = $("#game-field"),
         gameFieldWidth = $gameField.width(),
         gameFieldHeight = $gameField.height(),
-        $flyingBirdTemplates, templatesCount;
+        $BirdTemplates, templatesCount;
 
     /******************************************************
         TODO:
@@ -17,13 +17,13 @@ define("FlyingBird", function () {
     *******************************************************/
 
     // Cache templates and their count
-    $flyingBirdTemplates = $("#flying-bird-templates-wrapper").children();
-    templatesCount = $flyingBirdTemplates.length;
+    $BirdTemplates = $("#bird-templates-wrapper").children();
+    templatesCount = $BirdTemplates.length;
 
     // Generate and return flying nakov with random type
     function generateRandomTypeBird() {
         var randomNumber = Math.random() * templatesCount;
-        var randomTemplate = $flyingBirdTemplates.eq(Math.floor(randomNumber));
+        var randomTemplate = $BirdTemplates.eq(Math.floor(randomNumber));
         return randomTemplate.clone();
     }
 
@@ -44,7 +44,7 @@ define("FlyingBird", function () {
         var bird;
 
         if (birdClass) {
-            bird = $flyingBirdTemplates.find("." + birdClass);
+            bird = $BirdTemplates.find("." + birdClass);
 
             if (!bird.length) {
                 console.error("there is no bird template with this class: " + birdClass);
@@ -78,7 +78,7 @@ define("FlyingBird", function () {
     }
 
     // Constructor
-    function FlyingBird(birdClass) {
+    function Bird(birdClass) {
         var elementTop, elementLeft;
 
         // Check if class is passed to the constructor
@@ -95,7 +95,7 @@ define("FlyingBird", function () {
     }
 
     // Public API
-    FlyingBird.prototype = {
+    Bird.prototype = {
 
         // Start the moving animation
         flyIn: function (movesCount) {
@@ -145,5 +145,5 @@ define("FlyingBird", function () {
         }
     };
 
-    return FlyingBird;
+    return Bird;
 });

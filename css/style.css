@@ -31,7 +31,6 @@ html, body {
 .container {
     width: 1000px;
     margin: auto;
-    padding-top: 50px;
 }
 
 .bird {
@@ -58,7 +57,7 @@ html, body {
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 .nakov {
     width: 120px;
@@ -67,6 +66,6 @@ html, body {
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 

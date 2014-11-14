@@ -21,8 +21,7 @@ define("FlyingBird", function () {
     templatesCount = $flyingBirdTemplates.length;
 
     // Generate and return flying nakov with random type
-    // TODO: this is unnecessary function
-    function generateRandomType() {
+    function generateRandomTypeBird() {
         var randomNumber = Math.random() * templatesCount;
         var randomTemplate = $flyingBirdTemplates.eq(Math.floor(randomNumber));
         return randomTemplate.clone();
@@ -39,57 +38,72 @@ define("FlyingBird", function () {
         };
     }
 
+    // Creates bird with given class
+    // If no class is passed, returns bird with random class.
     function createBird(birdClass) {
-        // TODO: implement it!
+        var bird;
+
+        if (birdClass) {
+            bird = $flyingBirdTemplates.find("." + birdClass);
+
+            if (!bird.length) {
+                console.error("there is no bird template with this class: " + birdClass);
+                return generateRandomTypeBird();
+            }
+        } else {
+            return generateRandomTypeBird();
+        }
+
+        // Return copy of the template
+        return bird.clone();
     }
 
     // Creates the element animation
     // Change recurse with while loop to set the animation queue proper.
     // With recursive method we build the animation trail after each move end.
     // TODO: check main todo list
-    function animateElement(flyingBird, movesLeft) {
-        var newRandomPosition = generateRandomPosition(flyingBird.width, flyingBird.height);
+    function animateElement(movesLeft) {
+        var currentPosition, movesQueue, self = this;
 
-        flyingBird.$element.animate(newRandomPosition, flyingBird.speed, function () {
-            if (--movesLeft > 0) {
-                animateElement(flyingBird, movesLeft);
-                
+        movesQueue = setInterval(function () {
+            if (movesLeft--) {
+                var randomPosition = generateRandomPosition(self.width, self.height);
+                self.$element.css(randomPosition);
             } else {
-                // TODO: check main todo list
+                clearInterval(movesQueue);
             }
-        });
+        }, 1000);
+
+        return movesQueue;
     }
 
     // Constructor
-    function FlyingBird(defaultSpeed, birdClass) {
+    function FlyingBird(birdClass) {
         var elementTop, elementLeft;
 
         // Check if class is passed to the constructor
         if (birdClass) {
             this.$element = createBird(birdClass);
+        } else {
+            this.$element = generateRandomTypeBird();
         }
-        
-        // TODO: improve exists!!! createBird without class can make a random class bird!
-        this.$element = generateRandomType();
 
         // Append the element to the game field        
         this.$element.prependTo($gameField);
         this.width = this.$element.width();
         this.height = this.$element.height();
-        this.speed = defaultSpeed || 1300;
-
-        // Prepare and start
-        this.reinitialize();
-        this.startAnimation();
     }
 
     // Public API
     FlyingBird.prototype = {
 
         // Start the moving animation
-        startAnimation: function () {
+        flyIn: function (movesCount) {
+            this.reset();
             this.$element.removeClass("hidden");
-            animateElement(this, this.movesCount);
+            this.$element.addClass("animated");
+            
+            this.animationQueue = animateElement.apply(this, [movesCount]);
         },
 
         // Checks if the given coordinates are inside the object
@@ -106,16 +120,19 @@ define("FlyingBird", function () {
             return false;
         },
 
-        // Reinitializes the element to new starging position and stops any animation running
-        reinitialize: function () {
-            var position = generateRandomPosition(this.width, this.height);
-            position.top = gameFieldHeight;
+        reset: function() {
+            var randomPosition = generateRandomPosition(this.width, this.height);
+            randomPosition.top = gameFieldHeight;
+            this.$element.css(randomPosition);
+        },
 
-            this.$element
-                .addClass("hidden")
-                .clearQueue()
-                .stop()
-                .css(position);
+        // Starts flyout animation
+        flyOut: function () {
+            // TODO: Implement it
+            clearInterval(this.animationQueue);
+            this.$element.removeClass("animated");
+            this.$element.addClass("hidden");
+            this.reset();
         },
 
         // Get the element points
@@ -123,8 +140,9 @@ define("FlyingBird", function () {
             return this.$element.data("points");
         },
 
-        // Moves count per fly
-        movesCount: 5,
+        changeSpeed: function () {
+
+        }
     };
 
     return FlyingBird;

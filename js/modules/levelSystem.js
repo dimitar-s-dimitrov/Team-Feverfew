@@ -16,7 +16,7 @@ define("levelSystem", function (birds) {
             birds.push(new Bird());
         }
     }
-
+   
     function letBirdsFly() {
         var movesCount;
 

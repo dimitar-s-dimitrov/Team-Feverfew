@@ -13,7 +13,7 @@ define("game", function () {
             *Implement speed controller
             *Implement flying nakovs array generator with given count
             *Maybe implement flying nakovs array controller
-            *Implement hit animations
+            *Implement hit animationsss
             *shootAt method does so many work, improve it
             *Implement game over handler
     ****************************************************/

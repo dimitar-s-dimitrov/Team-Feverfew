@@ -46,6 +46,7 @@ define("levelSystem", function (birds) {
         },
 
         killBird: function (bird) {
+
             bird.flyOut();
 
             // Let the bird flyin in the proper level/time

@@ -9,6 +9,9 @@ define("crosshair", function () {
         crosshairWidth = $crosshair.width(),
         crosshairHeight = $crosshair.height();
 
+    // Using sound system module
+    var soundSystem = require("soundSystem");
+
     // Set the crosshair movement handler
     $(document.body).on("mousemove", function (e) {
         e.stopPropagation();
@@ -43,6 +46,12 @@ define("crosshair", function () {
          * element(relative to the parent) to the handler.
          */
         onShoot: function (action) {
+            // The user has shooted in my head... anyway...
+            // We can use your module as we have already included it
+            soundSystem.produceShootSound();
+            // I expect to hear a "booooom" sound by using this function, right?
+            // Ako chuq neshto drugo, shte si kaja "kakvo pravish ti, gad mrusna!?"
+
             $gameField.on("mousedown", function (e) {
                 e.stopPropagation();
                 e.preventDefault();

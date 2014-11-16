@@ -4,7 +4,7 @@ define("game", function () {
     // Private variables
     var birds = [],
         levelSystem = require("levelSystem", [birds]),
-
+        soundSystem = require("soundSystem"), // Using your module
         totalPoints,
         $pointsHeading = $("#points-heading");
 
@@ -38,6 +38,12 @@ define("game", function () {
             levelSystem.onGameOver = onGameOver;
 
             levelSystem.startLevel();
+
+            // We have started the the game and its level, lets play the game music
+            //soundSystem.playBackgroundMusic();
+            // TODO: Georgi, you know what to do!!! :D
+            // Be aware of the function names, you tell me what is their name!!!
+            // Also... Az zabludih Asq sus kofti imena.... Vnimavai publichnite imena kakvo kazvat i koe suotvetstva na tqh!!!
         },
 
         /* Accepts plain object with top and left properties

@@ -51,6 +51,9 @@ define("crosshair", function () {
                 e.preventDefault();
 
                 // When we pass a function to the onShoot function
+
+                // as action argument
+
                 // It defines a event handler to the mouse left click event
                 // $gameField.on is the function that defines the event handlers
                 // So every mouse left click tells the browser to run over this lines of code

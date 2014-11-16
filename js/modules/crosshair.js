@@ -46,15 +46,21 @@ define("crosshair", function () {
          * element(relative to the parent) to the handler.
          */
         onShoot: function (action) {
-            // The user has shooted in my head... anyway...
-            // We can use your module as we have already included it
-            soundSystem.produceShootSound();
-            // I expect to hear a "booooom" sound by using this function, right?
-            // Ako chuq neshto drugo, shte si kaja "kakvo pravish ti, gad mrusna!?"
-
             $gameField.on("mousedown", function (e) {
                 e.stopPropagation();
                 e.preventDefault();
+
+                // When we pass a function to the onShoot function
+                // It defines a event handler to the mouse left click event
+                // $gameField.on is the function that defines the event handlers
+                // So every mouse left click tells the browser to run over this lines of code
+                // We should make changes here!!
+
+                // The user has shooted in my head... anyway...
+                // We can use your module as we have already included it
+                soundSystem.produceShootSound();
+                // I expect to hear a "booooom" sound by using this function, right?
+                // Ako chuq neshto drugo, shte si kaja "kakvo pravish ti, gad mrusna!?"
 
                 action({
                     top: e.pageY - gameFieldOffset.top,

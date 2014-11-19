@@ -45,7 +45,7 @@ body{
 }
 #about-block{
     background-color: #79c9f9;
-    height: 200px;
+    height: 250px;
     margin-bottom: 50px;
     margin-top: 100px;
     padding: 5px;
@@ -55,7 +55,10 @@ body{
     box-shadow: 0 0 10px #fff;
     text-align: center;
 }
-
+#coincidential-info{
+    font-style: italic;
+    font-weight: bold;
+}
 .container {
     width: 1000px;
     margin: auto;

@@ -43,6 +43,18 @@ body{
     -webkit-box-shadow: 0 0 10px #fff;
     box-shadow: 0 0 10px #fff;
 }
+#about-block{
+    background-color: #79c9f9;
+    height: 200px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+    padding: 5px;
+    font-family: Gloria Hallelujah, sans-serif;
+    border: 2px solid #eeeeee;
+    -webkit-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+    text-align: center;
+}
 
 .container {
     width: 1000px;

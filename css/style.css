@@ -66,39 +66,29 @@ body{
 
 /* Add more bird classes below */
 
-.dean {
+.dean, .nakov, .angel, .aleksandra, .petya, .vladislav{
     width: 120px;
     height: 120px;
-    background-image: url("../img/flying-dean.png");
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
     /*border: 1px solid red;*/
+}
+.dean {
+    background-image: url("../img/flying-dean.png");
 }
 .nakov {
-    width: 120px;
-    height: 120px;
     background-image: url("../img/flying-nakov.png");
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    /*border: 1px solid red;*/
 }
 .angel {
-    width: 120px;
-    height: 120px;
     background-image: url("../img/flying-angel.png");
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    /*border: 1px solid red;*/
 }
 .aleksandra {
-    width: 120px;
-    height: 120px;
-    background-image: url("../img/flying-aleksandra.png");
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    /*border: 1px solid red;*/
+     background-image: url("../img/flying-aleksandra.png");
+ }
+.petya {
+    background-image: url("../img/flying-petya.png");
+}
+.vladislav {
+    background-image: url("../img/flying-vladislav.png");
 }

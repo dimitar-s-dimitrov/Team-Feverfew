@@ -93,3 +93,12 @@ body{
     background-repeat: no-repeat;
     /*border: 1px solid red;*/
 }
+.aleksandra {
+    width: 120px;
+    height: 120px;
+    background-image: url("../img/flying-aleksandra.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*border: 1px solid red;*/
+}

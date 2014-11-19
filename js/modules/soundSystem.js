@@ -1,7 +1,7 @@
 define("soundSystem", function () {
     // Vzemame referenciq kum audio html tag-a
-    var mainAudio = document.getElementById("#main-audio");
-    var effectsAudio = document.getElementById("#effects-audio");
+    var mainAudio = document.getElementById("main-audio");
+    var effectsAudio = document.getElementById("effects-audio");
 
     function shoot() {
         effectsAudio.load();
@@ -17,6 +17,9 @@ define("soundSystem", function () {
         produceShootSound: function () {
             // calling the private function
             shoot();
+        },
+        playNakovSong: function () {
+            // calling the private function
             playSong();
         }
     };

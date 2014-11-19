@@ -84,4 +84,12 @@ body{
     background-repeat: no-repeat;
     /*border: 1px solid red;*/
 }
-
+.angel {
+    width: 120px;
+    height: 120px;
+    background-image: url("../img/flying-angel.png");
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*border: 1px solid red;*/
+}

@@ -6,8 +6,6 @@ Music is going to be composed and implemented shortly
 * Implement audio module, which handles the audio html element
 * Implement css transition to improve the animations performance
 * Remove jquery animations - accepted by d0ntth1nc
-* Implement players with different score system
-* Add more duck types (html elements)
 
 * Until now the modules system returns new object every time when module is required.
   Maybe it is better to have only one module object everywhere.
